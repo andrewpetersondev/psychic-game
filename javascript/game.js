@@ -1,9 +1,5 @@
 // ================ INITIALIZE ==========================
-
-// computer will select one of these choices
 var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
-// variables for wins, losses, guesses remaining, guesses, randomLetter
 var wins = 0;
 var losses = 0;
 var guessesRemaining = 10;
@@ -12,12 +8,12 @@ var randomLetter = computerChoices[Math.floor(Math.random() * computerChoices.le
 
 console.log(randomLetter);
 
-// create a function to restart game
 function restart() {
     guessesRemaining = 10;
     userGuess = [];
     randomLetter = computerChoices[Math.floor(Math.random * computerChoices.length)];
 }
+
 // FUNCTIONS
 function initializeGame() {
     document.getElementById("wins").innerHTML = "wins : " + wins;
@@ -25,31 +21,39 @@ function initializeGame() {
     document.getElementById("guesses-remaining").innerHTML = "<b>guesses remaining </b> : " + guessesRemaining;
     document.getElementById("guesses").innerHTML = "You already guessed : " + userGuesses;
 }
+
 initializeGame();
 
 // ================= PLAY GAME =============================
-// .onkeyup function for user to guess what the letter is 
-document.onkeyup = function (event) {
 
-    // log user input and convert to lowercase
+// create a function based on pressing a key
+document.onkeyup = function (event) {
+    
+    // capture userInput and store it in lowercase
     var userInput = event.key.toLowerCase();
 
+    // make sure userInput is valid
     if (computerChoices.indexOf(userInput) > -1) {
 
+        // make sure user can only enter the same input once
         if (userGuesses.indexOf(userInput) === -1) {
-            // add user input to user guesses array
+
+            // insert userInput into userGuesses array
             userGuesses.push(userInput);
 
-
-            // if userGuess === computer generated random letter and guesses != 0 then increment wins + 1 and restart game
+            // if user guesses correctly 
             if ((userInput === randomLetter) && (guessesRemaining > 0)) {
                 wins++;
                 restart();
+            }
 
-            } else if (guessesRemaining > 0) {
+            // if user guesses incorrectly 
+            else if (guessesRemaining > 0) {
                 guessesRemaining--;
+            }
 
-            } else {
+            // if user runs out of guesses
+            else {
                 losses++;
                 restart();
             }
