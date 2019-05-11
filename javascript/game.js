@@ -7,40 +7,59 @@ var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l
 var wins = 0;
 var losses = 0;
 var guessesRemaining = 10;
-var wrongGuesses = [];
-var randomLetter = computerChoices[Math.floor(Math.random * computerChoices.length)];
+var userGuesses = [];
+var randomLetter = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+console.log(randomLetter);
 
 // create a function to restart game
-function restart {
+function restart() {
     guessesRemaining = 10;
-    wrongGuesses = [];
+    userGuess = [];
     randomLetter = computerChoices[Math.floor(Math.random * computerChoices.length)];
 }
-
+// FUNCTIONS
+function initializeGame() {
+    document.getElementById("wins").innerHTML = "wins : " + wins;
+    document.getElementById("losses").innerHTML = "losses : " + losses;
+    document.getElementById("guesses-remaining").innerHTML = "<b>guesses remaining </b> : " + guessesRemaining;
+    document.getElementById("guesses").innerHTML = "You already guessed : " + userGuesses;
+}
+initializeGame();
 
 // ================= PLAY GAME =============================
-
 // .onkeyup function for user to guess what the letter is 
-document.onkeyup = function playGame(event) {
-    userInput = event.key.toLowerCase();
+document.onkeyup = function (event) {
 
-    // if userGuess === computer generated random letter and guesses != 0 then increment wins + 1 and restart game
-    if ((userInput === randomLetter) && (guessesRemaining > 0)) {
-        wins++;
-        restart();
-        
-    } else if (guessesRemaining > 0 ) {
-        guessesRemaining--;
+    // log user input and convert to lowercase
+    var userInput = event.key.toLowerCase();
+
+    if (computerChoices.indexOf(userInput) > -1) {
+
+        if (userGuesses.indexOf(userInput) === -1) {
+            // add user input to user guesses array
+            userGuesses.push(userInput);
 
 
+            // if userGuess === computer generated random letter and guesses != 0 then increment wins + 1 and restart game
+            if ((userInput === randomLetter) && (guessesRemaining > 0)) {
+                wins++;
+                restart();
 
+            } else if (guessesRemaining > 0) {
+                guessesRemaining--;
+
+            } else {
+                losses++;
+                restart();
+            }
+            initializeGame();
+
+        } else {
+            alert("you already selected that");
+        }
     } else {
-        losses++;
-        restart();
+        alert("that is not a valid input. only letters.");
+
     }
-
-    // if userGuess !== computer generated random letter and guesses remaining === 0 then increment losses + 1 and restart game
-
-    // code that inputs game results to html
-
-}
+} 
