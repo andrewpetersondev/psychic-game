@@ -8,7 +8,7 @@ var wins = 0;
 var losses = 0; 
 var guessesRemaining = 10;
 var wrongGuesses = [];
-var randomLetter = Math.floor(Math.random * computerChoices.length);
+var randomLetter = computerChoices[Math.floor(Math.random * computerChoices.length)];
 
 
 // ================= PLAY GAME =============================
