@@ -1,4 +1,4 @@
-// ================ INITIALIZE ==========================
+// ================ VARIABLES ==========================
 var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var wins = 0;
 var losses = 0;
@@ -8,56 +8,53 @@ var randomLetter = computerChoices[Math.floor(Math.random() * computerChoices.le
 
 console.log(randomLetter);
 
-function restart() {
-    guessesRemaining = 10;
-    userGuess = [];
-    randomLetter = computerChoices[Math.floor(Math.random * computerChoices.length)];
-}
-
 // FUNCTIONS
 function initializeGame() {
     document.getElementById("wins").innerHTML = "wins : " + wins;
     document.getElementById("losses").innerHTML = "losses : " + losses;
     document.getElementById("guesses-remaining").innerHTML = "<b>guesses remaining </b> : " + guessesRemaining;
-    document.getElementById("guesses").innerHTML = "You already guessed : " + userGuesses;
+    document.getElementById("user-guesses").innerHTML = "You already guessed : " + userGuesses;
 }
 
 initializeGame();
+
+function restart() {
+    guessesRemaining = 10;
+    userGuesses = [];
+    randomLetter = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    console.log(randomLetter);
+
+}
 
 // ================= PLAY GAME =============================
 
 // create a function based on pressing a key
 document.onkeyup = function (event) {
-    
+
     // capture userInput and store it in lowercase
     var userInput = event.key.toLowerCase();
 
     // make sure userInput is valid
-    if (computerChoices.indexOf(userInput) > -1) {
+    if (computerChoices.indexOf(userInput) != -1) {
 
         // make sure user can only enter the same input once
-        if (userGuesses.indexOf(userInput) === -1) {
-
+        if (userGuesses.indexOf(userInput) == -1) {
             // insert userInput into userGuesses array
             userGuesses.push(userInput);
 
             // if user guesses correctly 
-            if ((userInput === randomLetter) && (guessesRemaining > 0)) {
+            if ((userInput === randomLetter)) {
                 wins++;
                 restart();
             }
-
-            // if user guesses incorrectly 
-            else if (guessesRemaining > 0) {
+            else {
                 guessesRemaining--;
             }
 
-            // if user runs out of guesses
-            else {
+            if (guessesRemaining <= 0) {
                 losses++;
                 restart();
             }
-            initializeGame();
 
         } else {
             alert("you already selected that");
@@ -66,4 +63,6 @@ document.onkeyup = function (event) {
         alert("that is not a valid input. only letters.");
 
     }
+
+    initializeGame();
 } 
