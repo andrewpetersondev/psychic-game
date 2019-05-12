@@ -8,12 +8,12 @@ var randomLetter = computerChoices[Math.floor(Math.random() * computerChoices.le
 
 console.log(randomLetter);
 
-// FUNCTIONS
+// ================ FUNCTIONS ============================
 function initializeGame() {
-    document.getElementById("wins").innerHTML = "wins : " + wins;
-    document.getElementById("losses").innerHTML = "losses : " + losses;
+    document.getElementById("wins").innerHTML = "<b>wins :</b> " + wins;
+    document.getElementById("losses").innerHTML = "<b>losses :</b> " + losses;
     document.getElementById("guesses-remaining").innerHTML = "<b>guesses remaining </b> : " + guessesRemaining;
-    document.getElementById("user-guesses").innerHTML = "You already guessed : " + userGuesses;
+    document.getElementById("user-guesses").innerHTML = "<b>You already guessed :</b>  " + userGuesses + " ";
 }
 
 initializeGame();
@@ -23,7 +23,6 @@ function restart() {
     userGuesses = [];
     randomLetter = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     console.log(randomLetter);
-
 }
 
 // ================= PLAY GAME =============================
@@ -39,6 +38,7 @@ document.onkeyup = function (event) {
 
         // make sure user can only enter the same input once
         if (userGuesses.indexOf(userInput) == -1) {
+
             // insert userInput into userGuesses array
             userGuesses.push(userInput);
 
@@ -64,5 +64,6 @@ document.onkeyup = function (event) {
 
     }
 
+    // call initialize game because it is the only function that has userGuesses
     initializeGame();
 } 
