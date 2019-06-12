@@ -24,8 +24,6 @@ function initializeGame() {
     document.getElementById("user-guesses").innerHTML = userGuesses.join(" ");
 }
 
-initializeGame();
-
 function restart() {
     guessesRemaining = 10;
     userGuesses = [];
@@ -35,17 +33,22 @@ function restart() {
 
 // ================= PLAY GAME =============================
 
+initializeGame();
+
 // create a function based on pressing a key
 document.onkeyup = function (event) {
 
     // capture userInput and store it in lowercase
-    var userInput = event.key.toLowerCase();
+    var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+
+    console.log("userInput = " + userInput);
+    // console.log("typeof userInput = " + typeof userInput); // string
 
     // make sure userInput is valid
-    if (computerChoices.indexOf(userInput) != -1) {
+    if (computerChoices.indexOf(userInput) !== -1) {
 
         // make sure user can only enter the same input once
-        if (userGuesses.indexOf(userInput) == -1) {
+        if (userGuesses.indexOf(userInput) === -1) {
 
             // insert userInput into userGuesses array
             userGuesses.push(userInput);

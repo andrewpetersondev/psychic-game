@@ -24,4 +24,4 @@ The purpose of this project was to practice solving basic problems using javascr
 
 ## Sources
 
-This project may have code from class activities, office hours notes, or from seeking help from TAs and teachers
+This project may have code from class activities, office hours notes, or from seeking help from TAs and teachers.
