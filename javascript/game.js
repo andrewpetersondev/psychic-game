@@ -1,19 +1,27 @@
-// ================ VARIABLES ==========================
+// ================ GLOBAL VARIABLES ==========================
 var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
 var wins = 0;
+
 var losses = 0;
+
 var guessesRemaining = 10;
+
 var userGuesses = [];
+
 var randomLetter = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-console.log(randomLetter);
+console.log("random letter = " + randomLetter);
 
 // ================ FUNCTIONS ============================
 function initializeGame() {
-    document.getElementById("wins").innerHTML = "<b>wins :</b> " + wins;
-    document.getElementById("losses").innerHTML = "<b>losses :</b> " + losses;
-    document.getElementById("guesses-remaining").innerHTML = "<b>guesses remaining </b> : " + guessesRemaining;
-    document.getElementById("user-guesses").innerHTML = "<b>You already guessed :</b>  " + userGuesses + " ";
+    document.getElementById("wins").innerHTML = wins;
+
+    document.getElementById("losses").innerHTML = losses;
+
+    document.getElementById("guesses-remaining").innerHTML = guessesRemaining;
+
+    document.getElementById("user-guesses").innerHTML = userGuesses.join(" ");
 }
 
 initializeGame();
@@ -22,7 +30,7 @@ function restart() {
     guessesRemaining = 10;
     userGuesses = [];
     randomLetter = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-    console.log(randomLetter);
+    console.log("random letter = " + randomLetter);
 }
 
 // ================= PLAY GAME =============================
@@ -56,14 +64,14 @@ document.onkeyup = function (event) {
                 restart();
             }
 
-        } else {
+        }
+        else {
             alert("you already selected that");
         }
-    } else {
+    }
+    else {
         alert("that is not a valid input. only letters.");
-
     }
 
-    // call initialize game because it is the only function that has userGuesses
     initializeGame();
 } 
