@@ -1,4 +1,6 @@
-// ================ GLOBAL VARIABLES ==========================
+// Global Variables
+// =========================================================================
+
 var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 var wins = 0;
@@ -13,7 +15,9 @@ var randomLetter = computerChoices[Math.floor(Math.random() * computerChoices.le
 
 console.log("random letter = " + randomLetter);
 
-// ================ FUNCTIONS ============================
+// Functions
+// =========================================================================
+
 function initializeGame() {
     document.getElementById("wins").innerHTML = wins;
 
@@ -31,7 +35,8 @@ function restart() {
     console.log("random letter = " + randomLetter);
 }
 
-// ================= PLAY GAME =============================
+// Main Processes
+// =========================================================================
 
 initializeGame();
 

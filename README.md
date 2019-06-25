@@ -1,10 +1,21 @@
 # psychic-game
 
+## Take a look
+
+**[Psychic Game](https://andrewpetersondev.github.io/psychic-game/)**
+
+## Overview
+
+## Technologies Used
+* html
+* css
+* javascript
+
 ## Overview
 
 The purpose of this project was to practice solving basic problems using javascript.
 
-## How the Game Works
+### Criteria
 
 1. You're going to make a game just like the one in the video. Essentially, the app randomly picks a letter, and the user has to guess which letter the app chose. Put the following text on your page:
 
