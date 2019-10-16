@@ -4,9 +4,8 @@
 
 **[Psychic Game](https://andrewpetersondev.github.io/psychic-game/)**
 
-## Overview
-
 ## Technologies Used
+
 * html
 * css
 * javascript
@@ -14,6 +13,10 @@
 ## Overview
 
 The purpose of this project was to practice solving basic problems using javascript.
+
+## Instructions
+
+Try to guess the letter before you run out of guesses.
 
 ### Criteria
 
