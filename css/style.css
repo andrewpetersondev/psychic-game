@@ -1,14 +1,19 @@
 body {
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   background-color: beige;
 }
 
+.container {
+  margin: 0 auto;
+  height: 100vh;
+  width: 75vw;
+}
 h1 {
   background-color: coral;
 }
 
 h2 {
-  background-color: rgb(113, 139, 0);
+  /* background-color: rgb(113, 139, 0); */
 }
 
 div p {
